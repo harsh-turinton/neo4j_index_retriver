@@ -1,0 +1,51 @@
+{
+  "tables": [
+    {
+      "name": "abc.production_lines",
+      "schema": "status, name, line_id, operators_required, location, max_capacity",
+      "columns": [
+        "status",
+        "name",
+        "line_id",
+        "operators_required",
+        "location",
+        "max_capacity"
+      ],
+      "description": "Current operational status of the line, Descriptive name of the production line, Unique identifier for each production line, Number of operators needed to run the line, Physical location of the line within the facility, Maximum production capacity in units per hour"
+    },
+    {
+      "name": "abc.shifts",
+      "schema": "line_id, start_time, end_time, name, shift_id, supervisor_id",
+      "columns": [
+        "line_id",
+        "start_time",
+        "end_time",
+        "name",
+        "shift_id",
+        "supervisor_id"
+      ],
+      "description": "Reference to the production line this shift is assigned to, Time when the shift starts, Time when the shift ends, Name of the shift (e.g., Morning, Afternoon, Night), Unique identifier for each shift, Reference to the employee who supervises this shift"
+    },
+    {
+      "name": "abc.line_product_categories",
+      "schema": "line_id, product_category",
+      "columns": [
+        "line_id",
+        "product_category"
+      ],
+      "description": "Reference to the production line, Product category that can be produced on this line"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "abc.shifts.line_id",
+      "target": "abc.production_lines.line_id",
+      "description": "Association between shifts and their corresponding production lines"
+    },
+    {
+      "source": "abc.line_product_categories.line_id",
+      "target": "abc.production_lines.line_id",
+      "description": "Association between product categories and the production line they are associated with"
+    }
+  ]
+}

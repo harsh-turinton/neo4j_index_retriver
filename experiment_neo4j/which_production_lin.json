@@ -1,0 +1,39 @@
+{
+  "tables": [
+    {
+      "name": "production_lines",
+      "schema": "line_details",
+      "columns": [
+        {
+          "name": "name",
+          "type": "unknown"
+        },
+        {
+          "name": "max_capacity",
+          "type": "unknown"
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "schema": "product_info",
+      "columns": [
+        {
+          "name": "category",
+          "type": "unknown"
+        },
+        {
+          "name": "product_id",
+          "type": "unknown"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "abc.production_lines.line_id",
+      "target": "abc.products.product_id",
+      "description": "Link between production lines and their produced products"
+    }
+  ]
+}
